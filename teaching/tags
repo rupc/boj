@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+K	teaching.cpp	/^int N, K, sol_flag, teaching_char;$/;"	v
+N	teaching.cpp	/^int N, K, sol_flag, teaching_char;$/;"	v
+REQSZ	teaching.cpp	8;"	d	file:
+S_FLAG	teaching.cpp	/^enum S_FLAG {$/;"	g	file:
+WORD_CNT	teaching.cpp	/^    WORD_ENOUGH, WORD_CNT$/;"	e	enum:S_FLAG	file:
+WORD_ENOUGH	teaching.cpp	/^    WORD_ENOUGH, WORD_CNT$/;"	e	enum:S_FLAG	file:
+WORD_NONE	teaching.cpp	/^    WORD_NONE, WORD_ONLY_FIXES, $/;"	e	enum:S_FLAG	file:
+WORD_ONLY_FIXES	teaching.cpp	/^    WORD_NONE, WORD_ONLY_FIXES, $/;"	e	enum:S_FLAG	file:
+echo_input	teaching.cpp	/^void genProbSolver::echo_input() {$/;"	f	class:genProbSolver
+eliminate_dups	teaching.cpp	/^inline void eliminate_dups(string &s) {$/;"	f
+eliminate_fixes	teaching.cpp	/^inline void eliminate_fixes(string &s) {$/;"	f
+eliminate_required	teaching.cpp	/^inline void eliminate_required(string &s) {$/;"	f
+genProbSolver	teaching.cpp	/^        genProbSolver(string s) : name(s) {}$/;"	f	class:genProbSolver
+genProbSolver	teaching.cpp	/^class genProbSolver {$/;"	c	file:
+main	teaching.cpp	/^int main(int argc, const char *argv[]) {$/;"	f
+name	teaching.cpp	/^        string name;$/;"	m	class:genProbSolver	file:
+preprocess	teaching.cpp	/^inline void preprocess(string &s) {$/;"	f
+process_input	teaching.cpp	/^void genProbSolver::process_input(istream &pin) {$/;"	f	class:genProbSolver
+process_output	teaching.cpp	/^void genProbSolver::process_output(ostream &pout) {$/;"	f	class:genProbSolver
+process_solution	teaching.cpp	/^void genProbSolver::process_solution() {$/;"	f	class:genProbSolver
+required	teaching.cpp	/^vector<char> required = {'a', 'c', 'i', 'n', 't'};$/;"	v
+sflg	teaching.cpp	/^S_FLAG sflg;$/;"	v
+sol_flag	teaching.cpp	/^int N, K, sol_flag, teaching_char;$/;"	v
+teaching_char	teaching.cpp	/^int N, K, sol_flag, teaching_char;$/;"	v
+words	teaching.cpp	/^list<string> words;$/;"	v

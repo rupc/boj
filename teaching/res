@@ -1,0 +1,3 @@
+g++ -o teaching teaching.cpp -std=c++14
+chmod +x teaching
+./teaching < teaching.in

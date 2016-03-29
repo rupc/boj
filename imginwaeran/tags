@@ -1,0 +1,26 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+N	imginwaeran.cpp	/^int N, out_a, out_b;$/;"	v
+ans	imginwaeran.cpp	/^    ans(int h, int o, int r) :$/;"	f	struct:ans
+ans	imginwaeran.cpp	/^struct ans {$/;"	s	file:
+commit	imginwaeran.cpp	/^vector<ans> commit;$/;"	v
+echo_input	imginwaeran.cpp	/^void genProbSolver::echo_input() {$/;"	f	class:genProbSolver
+genProbSolver	imginwaeran.cpp	/^        genProbSolver(string s) : name(s) {}$/;"	f	class:genProbSolver
+genProbSolver	imginwaeran.cpp	/^class genProbSolver {$/;"	c	file:
+hash_val	imginwaeran.cpp	/^    int hash_val;$/;"	m	struct:ans	file:
+main	imginwaeran.cpp	/^int main(int argc, const char *argv[]) {$/;"	f
+name	imginwaeran.cpp	/^        string name;$/;"	m	class:genProbSolver	file:
+operator <	imginwaeran.cpp	/^    bool operator < (ans &lhs) {$/;"	f	struct:ans
+operator <<	imginwaeran.cpp	/^    ostream& operator << (ostream &out) {$/;"	f	struct:ans
+order	imginwaeran.cpp	/^    int order;$/;"	m	struct:ans	file:
+original	imginwaeran.cpp	/^map<int, int> original;$/;"	v
+out_a	imginwaeran.cpp	/^int N, out_a, out_b;$/;"	v
+out_b	imginwaeran.cpp	/^int N, out_a, out_b;$/;"	v
+process_input	imginwaeran.cpp	/^void genProbSolver::process_input(istream &pin) {$/;"	f	class:genProbSolver
+process_output	imginwaeran.cpp	/^void genProbSolver::process_output(ostream &pout) {$/;"	f	class:genProbSolver
+process_solution	imginwaeran.cpp	/^void genProbSolver::process_solution() {$/;"	f	class:genProbSolver
+real_order	imginwaeran.cpp	/^    int real_order;$/;"	m	struct:ans	file:

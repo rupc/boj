@@ -1,0 +1,3 @@
+g++ -o robot-sim robot-sim.cpp -std=c++14
+chmod +x robot-sim
+./robot-sim < robot-sim.in

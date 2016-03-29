@@ -1,0 +1,3 @@
+g++ -o string-bomb string-bomb.cpp -std=c++14 -w | grep error
+chmod +x string-bomb
+./string-bomb < string-bomb.in

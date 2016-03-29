@@ -1,0 +1,3 @@
+g++ -o imginwaeran imginwaeran.cpp -std=c++14
+chmod +x imginwaeran
+./imginwaeran < imginwaeran.in

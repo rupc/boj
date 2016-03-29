@@ -1,0 +1,3 @@
+g++ -o room-num room-num.cpp -std=c++14
+chmod +x room-num
+./room-num < room-num.in

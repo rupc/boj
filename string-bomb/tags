@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BOMB_EVERY	string-bomb.cpp	19;"	d	file:
+BOMB_RESIDUE	string-bomb.cpp	20;"	d	file:
+echo_input	string-bomb.cpp	/^void genProbSolver::echo_input() { $/;"	f	class:genProbSolver
+genProbSolver	string-bomb.cpp	/^        genProbSolver(string s) : name(s) {}$/;"	f	class:genProbSolver
+genProbSolver	string-bomb.cpp	/^class genProbSolver {$/;"	c	file:
+main	string-bomb.cpp	/^int main(int argc, const char *argv[]) {$/;"	f
+name	string-bomb.cpp	/^        string name;$/;"	m	class:genProbSolver	file:
+pretty_print	string-bomb.cpp	/^void pretty_print(list<T> ls){$/;"	f
+process_input	string-bomb.cpp	/^void genProbSolver::process_input(istream &pin) {$/;"	f	class:genProbSolver
+process_output	string-bomb.cpp	/^void genProbSolver::process_output(ostream &pout) {$/;"	f	class:genProbSolver
+process_solution	string-bomb.cpp	/^void genProbSolver::process_solution() {$/;"	f	class:genProbSolver
+set_sol_flag	string-bomb.cpp	/^inline void set_sol_flag() {$/;"	f
+sol_flg	string-bomb.cpp	/^int sol_flg;$/;"	v
