@@ -109,7 +109,6 @@ void print_current_instruction() {
 }
 void genProbSolver::process_input(istream &pin) {
     string tmp("");
-    int input_num = 1;
     // read instruction
     while(getline(pin, tmp)) {
         if(tmp == "QUIT") {
@@ -174,7 +173,7 @@ void genProbSolver::process_output(ostream &pout) {
 
 }
 int main(int argc, const char *argv[]) {
-    genProbSolver probsolver("");
+    genProbSolver probsolver("go-stack");
     probsolver.process_input(std::cin);
     probsolver.echo_input();
     probsolver.process_solution();
