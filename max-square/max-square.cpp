@@ -64,7 +64,6 @@ void genProbSolver::echo_input() {
         std::cout << p << std::endl;
     } 
 }
-int check_surrounding(int i, int j);
 int check_right_bottom_edge(int i, int j, int k);
 void print_cache() {
     std::cout << "----print cache----" << std::endl;
@@ -117,14 +116,7 @@ int check_right_bottom_edge(int i, int j, int k) {
     }
     return cnt;
 }
-int check_surrounding(int i, int j) {
-    int cnt = 0;
-    if(matrix[i][j+1] == '1') ++cnt;
-    if(matrix[i][j-1] == '1') ++cnt;
-    if(matrix[i+1][j] == '1') ++cnt;
-    if(matrix[i-1][j] == '1') ++cnt;
-    return cnt;
-}
+
 void genProbSolver::process_output(ostream &pout) {
     cout << solution * solution;
 }
