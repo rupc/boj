@@ -1,0 +1,3 @@
+g++ -o ../bin/max-square max-square.cpp -std=c++14
+chmod +x ../bin/max-square
+../bin/max-square < max-square.in
