@@ -1,0 +1,3 @@
+g++ -o ../bin/sequence-2491 sequence-2491.cpp -std=c++14
+chmod +x ../sequence-2491
+../bin/sequence-2491 < sequence-2491.in
