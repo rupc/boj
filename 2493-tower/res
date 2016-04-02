@@ -1,0 +1,3 @@
+g++ -o ../bin/2493-tower 2493-tower.cpp -std=c++14
+chmod +x ../2493-tower
+../bin/2493-tower < ./2493-tower.in
