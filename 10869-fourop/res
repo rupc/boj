@@ -1,0 +1,3 @@
+g++ -o ../bin/10869-fourop 10869-fourop.cpp -std=c++14
+chmod +x ../10869-fourop
+../bin/10869-fourop < 10869-fourop.in

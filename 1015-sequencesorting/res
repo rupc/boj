@@ -1,0 +1,3 @@
+g++ -o ../bin/1015-sequencesorting 1015-sequencesorting.cpp -std=c++14
+chmod +x ../1015-sequencesorting
+../bin/1015-sequencesorting < 1015-sequencesorting.in

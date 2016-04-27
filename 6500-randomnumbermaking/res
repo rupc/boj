@@ -1,0 +1,3 @@
+g++ -o ../bin/6500-randomnumbermaking 6500-randomnumbermaking.cpp -std=c++14
+chmod +x ../6500-randomnumbermaking
+../bin/6500-randomnumbermaking < 6500-randomnumbermaking.in

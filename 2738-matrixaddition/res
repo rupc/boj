@@ -1,0 +1,3 @@
+g++ -o ../bin/2738-matrixaddition 2738-matrixaddition.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x ../bin/2738-matrixaddition
+../bin/2738-matrixaddition < 2738-matrixaddition.in

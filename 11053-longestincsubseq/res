@@ -1,0 +1,3 @@
+g++ -o ../bin/11053-longestincsubseq 11053-longestincsubseq.cpp -std=c++14
+chmod +x ../11053-longestincsubseq
+../bin/11053-longestincsubseq < 11053-longestincsubseq.in

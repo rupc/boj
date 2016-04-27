@@ -1,0 +1,3 @@
+g++ -o ../bin/9469-vonneumann 9469-vonneumann.cpp -std=c++14
+chmod +x ../9469-vonneumann
+../bin/9469-vonneumann < 9469-vonneumann.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/10974-allseq 10974-allseq.cpp -std=c++14
+chmod +x ../10974-allseq
+../bin/10974-allseq < 10974-allseq.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/1037-prime 1037-prime.cpp -std=c++14
+chmod +x ../1037-prime
+../bin/1037-prime < 1037-prime.in

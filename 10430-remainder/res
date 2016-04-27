@@ -1,0 +1,3 @@
+g++ -o ../bin/10430-remainder 10430-remainder.cpp -std=c++14
+chmod +x ../10430-remainder
+../bin/10430-remainder < 10430-remainder.in

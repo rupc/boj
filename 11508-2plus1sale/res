@@ -1,0 +1,3 @@
+g++ -o ../bin/11508-2plus1sale 11508-2plus1sale.cpp -std=c++14
+chmod +x ../11508-2plus1sale
+../bin/11508-2plus1sale < 11508-2plus1sale.in

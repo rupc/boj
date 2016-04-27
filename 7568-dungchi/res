@@ -1,0 +1,3 @@
+g++ -o ../bin/7568-dungchi 7568-dungchi.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG > text.txt
+chmod +x ../bin/7568-dungchi
+../bin/7568-dungchi < 7568-dungchi.in

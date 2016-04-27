@@ -1,0 +1,3 @@
+g++ -o ../bin/2439-starprint2 2439-starprint2.cpp -std=c++14
+chmod +x ../2439-starprint2
+../bin/2439-starprint2 < 2439-starprint2.in

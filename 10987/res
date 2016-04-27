@@ -1,0 +1,3 @@
+g++ -o ../bin/10987 10987.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x ../bin/10987
+../bin/10987 < 10987.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/9498-exam 9498-exam.cpp -std=c++14
+chmod +x ../9498-exam
+../bin/9498-exam < 9498-exam.in

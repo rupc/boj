@@ -1,0 +1,3 @@
+g++ -o ../bin/2557-helloworld 2557-helloworld.cpp -std=c++14
+chmod +x ../2557-helloworld
+../bin/2557-helloworld < 2557-helloworld.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/1085-escapefromsqure 1085-escapefromsqure.cpp -std=c++14
+chmod +x ../1085-escapefromsqure
+../bin/1085-escapefromsqure < 1085-escapefromsqure.in

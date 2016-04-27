@@ -1,0 +1,3 @@
+g++ -o ../bin/9325-howmuch 9325-howmuch.cpp -std=c++14
+chmod +x ../9325-howmuch
+../bin/9325-howmuch < 9325-howmuch.in

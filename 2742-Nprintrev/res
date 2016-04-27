@@ -1,0 +1,3 @@
+g++ -o ../bin/2742-Nprintrev 2742-Nprintrev.cpp -std=c++14
+chmod +x ../2742-Nprintrev
+../bin/2742-Nprintrev < 2742-Nprintrev.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/1032-cmdprompt 1032-cmdprompt.cpp -std=c++14
+chmod +x ../1032-cmdprompt
+../bin/1032-cmdprompt < 1032-cmdprompt.in

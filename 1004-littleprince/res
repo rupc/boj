@@ -1,0 +1,3 @@
+g++ -o ../bin/1004-littleprince 1004-littleprince.cpp -std=c++14
+chmod +x ../1004-littleprince
+../bin/1004-littleprince < 1004-littleprince.in

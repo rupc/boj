@@ -1,0 +1,3 @@
+g++ -o ../bin/10808-alphabet-number 10808-alphabet-number.cpp -std=c++14
+chmod +x ../10808-alphabet-number
+../bin/10808-alphabet-number < 10808-alphabet-number.in

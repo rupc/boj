@@ -1,0 +1,3 @@
+g++ -o ../bin/1003-fibonacci-function 1003-fibonacci-function.cpp -std=c++14
+chmod +x ../1003-fibonacci-function
+../bin/1003-fibonacci-function < 1003-fibonacci-function.in

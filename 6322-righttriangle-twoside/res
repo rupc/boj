@@ -1,0 +1,3 @@
+g++ -o ../bin/6322-righttriangle-twoside 6322-righttriangle-twoside.cpp -std=c++14 -Wall -O2 -g -DACMICPC
+chmod +x ../6322-righttriangle-twoside
+../bin/6322-righttriangle-twoside < 6322-righttriangle-twoside.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/5354 5354.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x ../bin/5354
+../bin/5354 < 5354.in

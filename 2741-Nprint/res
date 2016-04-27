@@ -1,0 +1,3 @@
+g++ -o ../bin/2741-Nprint 2741-Nprint.cpp -std=c++14
+chmod +x ../2741-Nprint
+../bin/2741-Nprint < 2741-Nprint.in

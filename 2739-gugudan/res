@@ -1,0 +1,3 @@
+g++ -o ../bin/2739-gugudan 2739-gugudan.cpp -std=c++14
+chmod +x ../2739-gugudan
+../bin/2739-gugudan < 2739-gugudan.in

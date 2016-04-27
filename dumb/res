@@ -1,0 +1,3 @@
+g++ -o ../bin/dumb dumb.cpp -std=c++14
+chmod +x ../dumb
+../bin/dumb < dumb.in

@@ -1,0 +1,3 @@
+g++ -o ../bin/10998-A*B 10998-A*B.cpp -std=c++14
+chmod +x ../10998-A*B
+../bin/10998-A*B < 10998-A*B.in

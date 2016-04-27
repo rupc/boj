@@ -1,0 +1,3 @@
+g++ -o ../bin/9501-ggungstravel 9501-ggungstravel.cpp -std=c++14
+chmod +x ../9501-ggungstravel
+../bin/9501-ggungstravel < 9501-ggungstravel.in

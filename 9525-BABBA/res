@@ -1,0 +1,3 @@
+g++ -o ../bin/9525-BABBA 9525-BABBA.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x ../bin/9525-BABBA
+../bin/9525-BABBA < 9525-BABBA.in

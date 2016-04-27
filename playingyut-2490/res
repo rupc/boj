@@ -1,0 +1,3 @@
+g++ -o ../bin/playingyut-2490 playingyut-2490.cpp -std=c++14
+chmod +x ../playingyut-2490
+../bin/playingyut-2490 < playingyut-2490.in

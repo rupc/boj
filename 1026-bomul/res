@@ -1,0 +1,3 @@
+g++ -o ../bin/1026-bomul 1026-bomul.cpp -std=c++14
+chmod +x ../1026-bomul
+../bin/1026-bomul < 1026-bomul.in

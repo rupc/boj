@@ -1,0 +1,3 @@
+g++ -o ../bin/4999-Ah! 4999-Ah!.cpp -std=c++14
+chmod +x ../4999-Ah!
+../bin/4999-Ah! < 4999-Ah!.in

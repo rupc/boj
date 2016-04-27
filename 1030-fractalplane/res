@@ -1,0 +1,3 @@
+g++ -o ../bin/1030-fractalplane 1030-fractalplane.cpp -std=c++14
+chmod +x ../1030-fractalplane
+../bin/1030-fractalplane < 1030-fractalplane.in

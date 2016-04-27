@@ -1,0 +1,3 @@
+g++ -o ../bin/10757-bigplusA+B 10757-bigplusA+B.cpp -std=c++14
+chmod +x ../10757-bigplusA+B
+../bin/10757-bigplusA+B < 10757-bigplusA+B.in
