@@ -53,22 +53,22 @@ void process_instruction(string &inst) {
             go_stack.push(itmp1);
             go_stack.push(itmp2);
         } else if (prefix == "ADD") {
-            long long int res = (long long int)itmp1 + itmp2;
-            if(res > STACK_NUM_LIMIT) throw STACK_NUM_LIMIT;
-            go_stack.push(res);
+            long long int res = (long long int)itmp1 + (long long int)itmp2;
+            if(res > STACK_NUM_LIMIT) throw STACK_ERROR;
+            go_stack.push((int)res);
         } else if (prefix == "SUB") {
             long long int res = (long long int)itmp2 - itmp1;
-            if(abs(res) > STACK_NUM_LIMIT) throw STACK_NUM_LIMIT;
-            go_stack.push(res);
+            if(abs(res) > STACK_NUM_LIMIT) throw STACK_ERROR;
+            go_stack.push((int)res);
         } else if (prefix == "MUL") {
-            long long int res = (long long int)itmp1 * itmp2;
-            if(res > STACK_NUM_LIMIT) throw STACK_NUM_LIMIT;
-            go_stack.push(res);
+            long long int res = (long long int)itmp1 * (long long int)itmp2;
+            if(res > STACK_NUM_LIMIT) throw STACK_ERROR;
+            go_stack.push((int)res);
         } else if (prefix == "DIV") {
             if(itmp1 == 0) throw STACK_ERROR;
             res = abs(itmp2) / abs(itmp2);
-            if((itmp2 < 0) && (itmp1 > 0) ||
-               (itmp2 > 0) && (itmp1 < 0))
+            if(((itmp2 < 0) && (itmp1 > 0)) ||
+               ((itmp2 > 0) && (itmp1 < 0)))
                 res -= res;
             go_stack.push(res);
         } else if (prefix == "MOD") {
@@ -97,10 +97,9 @@ void read_directives(string &tmp) {
     input_vec.resize(repeat);
     for (int i = 0; i < repeat; i++) {
         cin >> itmp;
-        //cout << itmp << endl;
         input_vec[i] = itmp;
+        //cout << itmp << endl;
     }
-
     //getline(cin, tmp);
 }
 void print_current_instruction() {
@@ -143,8 +142,10 @@ void genProbSolver::process_input(istream &pin) {
                         } else if(n == STACK_END) {
                             if(go_stack.size() == 1) {
                                 cout << go_stack.top();
+                                break;
                             } else {
                                 cout << "ERROR";
+                                break;
                             }
                         }
                     }
@@ -158,8 +159,7 @@ void genProbSolver::process_input(istream &pin) {
             cout << endl;
             // after one test case,
             // clear instruction list, input vector
-            inst_list.clear();
-            input_vec.clear();
+            inst_list.clear(); input_vec.clear();
         }
     }   
 }
