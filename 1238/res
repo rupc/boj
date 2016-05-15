@@ -1,0 +1,3 @@
+g++ -o ~/work/acm/bin/1238 1238.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x ~/work/acm/bin/1238
+~/work/acm/bin/1238 < 1238.in

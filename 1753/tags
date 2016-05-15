@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Adjs	1753.cpp	/^std::list<std::pair<int, int>> *Adjs; \/\/ id, adj-list$/;"	v
+DIST_INF	1753.cpp	33;"	d	file:
+echo_input	1753.cpp	/^void genProbSolver::echo_input() {$/;"	f	class:genProbSolver
+genProbSolver	1753.cpp	/^        genProbSolver(string s) : name(s) {}$/;"	f	class:genProbSolver
+genProbSolver	1753.cpp	/^class genProbSolver {$/;"	c	file:
+iPair	1753.cpp	/^typedef std::pair<int, int> iPair;$/;"	t	file:
+main	1753.cpp	/^int main(int argc, const char *argv[]) {$/;"	f
+name	1753.cpp	/^        string name;$/;"	m	class:genProbSolver	file:
+process_input	1753.cpp	/^void genProbSolver::process_input(istream &pin) {$/;"	f	class:genProbSolver
+process_output	1753.cpp	/^void genProbSolver::process_output(ostream &pout) {$/;"	f	class:genProbSolver
+process_solution	1753.cpp	/^void genProbSolver::process_solution() {$/;"	f	class:genProbSolver

@@ -1,0 +1,2 @@
+g++ -o ~/work/acm/bin/10817-세 수 10817-세 수.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x ~/work/acm/bin/10817-세 수
