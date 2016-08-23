@@ -77,7 +77,7 @@ void genProbSolver::process_input(istream &pin) {
         }
         cout << endl;
     }*/
-    cout << cache[max_idx].size();
+    cout << A - cache[max_idx].size();
     /*for (int i = 0; i < max_val; i++) {
         cout << cache[max_idx][i] << " ";
     }*/
