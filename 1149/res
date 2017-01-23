@@ -1,0 +1,3 @@
+g++ -o /home/jyr/work/boj/1149 1149.cpp -std=c++14 -Wall -O2 -g -pg -DACMICPC -DDEBUG
+chmod +x /home/jyr/work/boj/1149
+/home/jyr/work/boj/1149 < 1149.in
