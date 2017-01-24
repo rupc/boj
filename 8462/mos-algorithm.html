@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://blog.anudeep2011.com/xmlrpc.php">
+
+<title>MO&#8217;s Algorithm (Query square root decomposition) &#8211; Anudeep&#039;s blog</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s3-us-west-2.amazonaws.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Anudeep&#039;s blog &raquo; Feed" href="https://blog.anudeep2011.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Anudeep&#039;s blog &raquo; Comments Feed" href="https://blog.anudeep2011.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Anudeep&#039;s blog &raquo; MO&#8217;s Algorithm (Query square root decomposition) Comments Feed" href="https://blog.anudeep2011.com/mos-algorithm/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.anudeep2011.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.1"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='puro-style-css'  href='https://blog.anudeep2011.com/wp-content/themes/puro/style.css?x86950' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://blog.anudeep2011.com/wp-content/themes/puro/font-awesome/css/font-awesome.min.css?x86950' type='text/css' media='all' />
+<link rel='stylesheet' id='felloy-mx-css-css'  href='https://s3-us-west-2.amazonaws.com/felloy/mixup.min.css' type='text/css' media='all' />
+<!-- `sharedaddy` is included in the concatenated jetpack.css -->
+<link rel='stylesheet' id='social-logos-css'  href='https://blog.anudeep2011.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?x86950' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://blog.anudeep2011.com/wp-content/plugins/jetpack/css/jetpack.css?x86950' type='text/css' media='all' />
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-includes/js/jquery/jquery.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-includes/js/jquery/jquery-migrate.min.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/jquery.theme-main.min.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/skip-link-focus-fix.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/jquery.fitvids.min.js?x86950'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/flexie.js?x86950'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/html5shiv-printshiv.js?x86950'></script>
+<![endif]-->
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/selectivizr.min.js?x86950'></script>
+<![endif]-->
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/felloy-wp/mixup.min.js?x86950'></script>
+<link rel='https://api.w.org/' href='https://blog.anudeep2011.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.anudeep2011.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.anudeep2011.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='When 2 guys talk, its not always about girls/sports ;)' href='https://blog.anudeep2011.com/when-2-guys-talk-its-not-always-about-girlssports/' />
+<link rel='next' title='Machine learning everywhere, why not in Competitive programming?' href='https://blog.anudeep2011.com/machine-learning-everywhere-why-not-in-competitive-programming/' />
+<meta name="generator" content="WordPress 4.7.1" />
+<link rel="canonical" href="https://blog.anudeep2011.com/mos-algorithm/" />
+<link rel='shortlink' href='https://wp.me/p4pUrJ-2z' />
+<link rel="alternate" type="application/json+oembed" href="https://blog.anudeep2011.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.anudeep2011.com%2Fmos-algorithm%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://blog.anudeep2011.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.anudeep2011.com%2Fmos-algorithm%2F&#038;format=xml" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<link rel='dns-prefetch' href='//i0.wp.com'>
+<link rel='dns-prefetch' href='//i1.wp.com'>
+<link rel='dns-prefetch' href='//i2.wp.com'>
+<link rel='dns-prefetch' href='//jetpack.wordpress.com'>
+<link rel='dns-prefetch' href='//s0.wp.com'>
+<link rel='dns-prefetch' href='//s1.wp.com'>
+<link rel='dns-prefetch' href='//s2.wp.com'>
+<link rel='dns-prefetch' href='//public-api.wordpress.com'>
+<link rel='dns-prefetch' href='//0.gravatar.com'>
+<link rel='dns-prefetch' href='//1.gravatar.com'>
+<link rel='dns-prefetch' href='//2.gravatar.com'>
+<link rel="pingback" href="https://blog.anudeep2011.com/xmlrpc.php">	<style type="text/css" id="puro-menu-css"> 
+		@media (max-width: 768px) {
+			.site-branding { float: left }
+			.rtl .site-branding { float: right; padding-right: 0 }
+			.responsive-menu .main-navigation ul { display: none } 
+			.responsive-menu .menu-toggle { display: block }
+			.main-navigation { float: right }
+		}			
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="MO&#8217;s Algorithm (Query square root decomposition)" />
+<meta property="og:url" content="https://blog.anudeep2011.com/mos-algorithm/" />
+<meta property="og:description" content="Once again I found a topic that is useful, interesting but has very less resources online. Before writing this I did a small survey and surprised that almost none of the Indian programmers knew thi…" />
+<meta property="article:published_time" content="2014-12-28T07:21:33+00:00" />
+<meta property="article:modified_time" content="2016-08-18T08:27:20+00:00" />
+<meta property="article:author" content="https://www.facebook.com/anu2011" />
+<meta property="og:site_name" content="Anudeep&#039;s blog" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@anudeep2011" />
+<meta name="twitter:card" content="summary" />
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+
+<style id="custom-css-css">.wysija-submit{display:block;margin-top:10px}</style>
+</head>
+
+<body class="post-template-default single single-post postid-159 single-format-standard no-touch resp sidebar">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<header id="masthead" class="site-header no-tagline responsive-menu" role="banner">
+		<div class="site-header-inner">
+			<div class="site-branding">
+				<a href="https://blog.anudeep2011.com/" rel="home"><h1 class="site-title">Anudeep&#039;s blog</h1></a>
+								
+			</div><!-- .site-branding-->			
+										<nav id="site-navigation" class="main-navigation" role="navigation">
+					<button class="menu-toggle"></button>									</nav><!-- #site-navigation -->
+					</div><!-- .site-header-inner -->
+	</header><!-- #masthead -->
+	
+	<div id="content" class="site-content">
+
+	
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-159" class="post-159 post type-post status-publish format-standard hentry category-algorithms">
+			
+	<header class="entry-header">	
+		<h1 class="entry-title">MO&#8217;s Algorithm (Query square root decomposition)</h1>
+				<div class="entry-meta">
+			<span class="entry-date"><time class="published" datetime="2014-12-28T12:51:33+00:00">28 December 2014</time><time class="updated" datetime="2016-08-18T13:57:20+00:00">August 18, 2016</time></span><span class="byline"><span class="author vcard"><a class="url fn n" href="https://blog.anudeep2011.com/author/anudeep2011/" rel="author">anudeep2011</a></span></span><span class="cat-links"><a href="https://blog.anudeep2011.com/category/algorithms/" rel="category tag">Algorithms</a></span><span class="comments-link"><a href="https://blog.anudeep2011.com/mos-algorithm/#comments"><span class="dsq-postid" data-dsqidentifier="159 http://blog.anudeep2011.com/?p=159">69 Comments</span></a></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>Once again I found a topic that is useful, interesting but has very less resources online. Before writing this I did a small survey and surprised that almost none of the Indian programmers knew this algorithm. Its important to learn this, all the red programmers on codeforces use this effectively in div 1 C and D problems. There were not any problems on this an year and half back, but from then there is a spike up! We can expect more problems on this in future contests.</p>
+<p>1) State a problem<br />
+2) Explain a simple solution which takes O(N^2)<br />
+3) Slight modification to above algorithm. It still runs in O(N^2)<br />
+4) Explain an algorithm to solve above problem and state its correctness<br />
+5) Proof for complexity of above algorithm &#8211; O(Sqrt(N) * N)<br />
+6) Explain where and when we can use above algorithm<br />
+7) Problems for practice and sample code</p>
+<p><strong>State a problem</strong></p>
+<p>Given an array of size N. All elements of array &lt;= N. You need to answer M queries. Each query is of the form L, R. You need to answer the count of values in range [L, R] which are repeated at least 3 times.<br />
+Example: Let the array be {1, 2, 3, 1, 1, 2, 1, 2, 3, 1} (zero indexed)<br />
+Query: L = 0, R = 4. Answer = 1. Values in the range [L, R] = {1, 2, 3, 1, 1} only 1 is repeated at least 3 times.<br />
+Query: L = 1, R = 8. Answer = 2. Values in the range [L, R] = {2, 3, 1, 1, 2, 1, 2, 3} 1 is repeated 3 times and 2 is repeated 3 times. Number of elements repeated at least 3 times = Answer = 2.<br />
+<span id="more-159"></span><br />
+<strong>Explain a simple solution which takes O(N^2)<br />
+</strong></p>
+<p>For each query, loop from L to R, count the frequency of elements and report the answer. Considering M = N, following runs in O(N^2) in worst case.</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+for each query:
+  answer = 0
+  count[] = 0
+  for i in {l..r}:
+    count[array[i]]++
+    if count[array[i]] == 3:
+      answer++
+</pre>
+<p><strong>Slight modification to above algorithm. It still runs in O(N^2)</strong></p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+add(position):
+  count[array[position]]++
+  if count[array[position]] == 3:
+    answer++
+
+remove(position):
+  count[array[position]]--
+  if count[array[position]] == 2:
+    answer--
+
+currentL = 0
+currentR = 0
+answer = 0
+count[] = 0
+for each query:
+  // currentL should go to L, currentR should go to R
+  while currentL &amp;amp;lt; L:
+    remove(currentL)
+    currentL++
+  while currentL &amp;amp;gt; L:
+    add(currentL)
+    currentL--
+  while currentR &amp;amp;lt; R:
+    add(currentR)
+    currentR++
+  while currentR &amp;amp;gt; R:
+    remove(currentR)
+    currentR--
+  output answer
+</pre>
+<p>Initially we always looped from L to R, but now we are changing the positions from previous query to adjust to current query.<br />
+If previous query was L=3, R=10, then we will have currentL=3 and currentR=10 by the end of that query. Now if the next query is L=5, R=7, then we move the currentL to 5 and currentR to 7.<br />
+add function means we are adding the element at position to our current set. And updating answer accordingly.<br />
+remove function means we are deleting the element at position from our current set. And updating answer accordingly.<br />
+<strong>Edit</strong>: Have a look a Shubajit Saha&#8217;s comment. And also <a href="http://codeforces.com/blog/entry/46399?#comment-308528">this</a>.</p>
+<p><strong>Explain an algorithm to solve above problem and state its correctness<br />
+</strong></p>
+<p>MO&#8217;s algorithm is just an order in which we process the queries. We were given M queries, we will re-order the queries in a particular order and then process them. Clearly, this is an offline algorithm. Each query has L and R, we will call them opening and closing. Let us divide the given input array into Sqrt(N) blocks. Each block will be N / Sqrt(N) = Sqrt(N) size. Each opening has to fall in one of these blocks. Each closing has to fall in one of these blocks.</p>
+<p>A query belongs to P&#8217;th block if the opening of that query fall in P&#8217;th block. In this algorithm we will process the queries of 1st block. Then we process the queries of 2nd block and so on.. finally Sqrt(N)&#8217;th block. We already have an ordering, queries are ordered in the ascending order of its block. There can be many queries that belong to the same block.</p>
+<p>From now, I will ignore about all the blocks and only focus on how we query and answer block 1. We will similarly do for all blocks. All of these queries have their opening in block 1, but their closing can be in any block including block 1. Now let us reorder these queries in ascending order of their R value. We do this for all the blocks.</p>
+<p>How does the final order look like?<br />
+All the queries are first ordered in ascending order of their block number (block number is the block in which its opening falls). Ties are ordered in ascending order of their R value.<br />
+For example consider following queries and assume we have 3 blocks each of size 3.<br />
+{0, 3} {1, 7} {2, 8} {7, 8} {4, 8} {4, 4} {1, 2}<br />
+Let us re-order them based on their block number.<br />
+{0, 3} {1, 7} {2, 8} {1, 2} {4, 8} {4, 4} {7, 8}<br />
+Now let us re-order ties based on their R value.<br />
+{1, 2} {0, 3} {1, 7} {2, 8} {4, 4} {4, 8} {7, 8}</p>
+<p>Now we use the same code stated in previous section and solve the problem. Above algorithm is correct as we did not do any changes but just reordered the queries.</p>
+<p><strong>Proof for complexity of above algorithm &#8211; O(Sqrt(N) * N)<br />
+</strong></p>
+<p>We are done with MO&#8217;s algorithm, it is just an ordering. Awesome part is its runtime analysis. It turns out that the O(N^2) code we wrote works in O(Sqrt(N) * N) time if we follow the order i specified above. Thats awesome right, with just reordering the queries we reduced the complexity from O(N^2) to O(Sqrt(N) * N), and that too with out any further modification to code. Hurray! we will get AC with O(Sqrt(N) * N).</p>
+<p>Have a look at our code above, the complexity over all queries is determined by the 4 while loops. First 2 while loops can be stated as &#8220;Amount moved by left pointer in total&#8221;, second 2 while loops can be stated as &#8220;Amount moved by right pointer&#8221;. Sum of these two will be the over all complexity.</p>
+<p>Most important. Let us talk about the right pointer first. For each block, the queries are sorted in increasing order, so clearly the right pointer (currentR) moves in increasing order. During the start of next block the pointer possibly at extreme end will move to least R in next block. That means for a given block, the amount moved by right pointer is O(N). We have O(Sqrt(N)) blocks, so the total is O(N * Sqrt(N)). Great!</p>
+<p>Let us see how the left pointer moves. For each block, the left pointer of all the queries fall in the same block, as we move from query to query the left pointer might move but as previous L and current L fall in the same block, the moment is O(Sqrt(N)) (Size of the block). In each block the amount left pointer movies is O(Q * Sqrt(N)) where Q is number of queries falling in that block. Total complexity is O(M * Sqrt(N)) for all blocks.</p>
+<p>There you go, total complexity is O( (N + M) * Sqrt(N)) = O( N * Sqrt(N))</p>
+<p><strong>Explain where and when we can use above algorithm</strong></p>
+<p>As mentioned, this algorithm is offline, that means we cannot use it when we are forced to stick to given order of queries. That also means we cannot use this when there are update operations. Not just that, there is one important possible limitation: We should be able to write the functions add and remove. There will be many cases where add is trivial but remove is not. One such example is where we want maximum in a range. As we add elements, we can keep track of maximum. But when we remove elements it is not trivial. Anyways in that case we can use a set to add elements, remove elements and report minimum. In that case the add and delete operations are O(log N) (Resulting in O(N * Sqrt(N) * log N) algorithm).</p>
+<p>There are many cases where we can use this algorithm. In few cases we can also use other Data Structures like segment trees, but for few problems using MO&#8217;s algorithm is a must. Lets discuss few problems in the next section.</p>
+<p><strong>Problems for practice and sample code</strong></p>
+<p><a href="http://www.spoj.com/problems/DQUERY/" target="_blank">DQUERY &#8211; SPOJ</a>: Number of distinct elements in a range = number of elements with frequency &gt;= 1. So it is the same problem we discussed above.<br />
+<a href="https://github.com/anudeep2011/programming/blob/master/DQUERY.cpp" target="_blank"><strong>Click here for sample code</strong></a><br />
+<strong>Note</strong>: That code will give TLE on submission, it will give AC if fast I/O is added. Removed fast I/O to keep code clean.<br />
+<span style="color: #222222;"><a href="http://codeforces.com/contest/86/problem/D" target="_blank">Powerful array &#8211; CF Div1 D</a>: This is an example where MO&#8217;s algorithm is a must. I cannot think of any other solution. CF Div1 D means it is a hard problem. See how easy it is using MO&#8217;s algorithm in this case. You only need to modify add(), remove() functions in above code.<br />
+</span><a href="http://www.codechef.com/MARCH14/problems/GERALD07" target="_blank">GERALD07 &#8211; Codechef<br />
+</a><a href="http://codeforces.com/problemset/problem/375/D" target="_blank">GERALD3 &#8211; Codechef<br />
+</a><span style="color: #222222;"><a href="http://codeforces.com/problemset/problem/375/D" target="_blank">Tree and Queries &#8211; CF Div1 D<br />
+</a><a href="http://www.codechef.com/problems/IITI15">Powerful Array &#8211; CF Div1 D<br />
+Jeff and Removing Periods &#8211; CF Div1 D<br />
+Sherlock and Inversions &#8211; Codechef<br />
+</a></span></p>
+<p>I am sure there are more problems, if you know any of them, do comment, i will add them.<br />
+While this algorithm has a special name &#8220;MO&#8221;, it is just smart square root decomposition.</p>
+<p>Signing off! Wish you a happy new year 🙂</p>
+<p>Share this post! Learn and let learn 🙂</p>
+<div class="felloy-pe"></div>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share And Smile:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-159" class="share-facebook sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=reddit" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-159" class="share-twitter sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-159" class="share-pinterest sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span>Pinterest</span></a></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span>Tumblr</span></a></li><li class="share-end"></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-159" class="share-google-plus-1 sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=google-plus-1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/#print" target="_blank" title="Click to print"><span>Print</span></a></li><li class="share-end"></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-159" class="share-linkedin sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-pocket"><a rel="nofollow" data-shared="" class="share-pocket sd-button share-icon" href="https://blog.anudeep2011.com/mos-algorithm/?share=pocket" target="_blank" title="Click to share on Pocket"><span>Pocket</span></a></li><li class="share-end"></li><li class="share-end"></li></ul></div></div></div></div></div>			</div><!-- .entry-content -->
+	
+	<footer class="entry-footer">
+					</footer><!-- .entry-footer -->		
+</article><!-- #post-## -->
+			
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://blog.anudeep2011.com/when-2-guys-talk-its-not-always-about-girlssports/" rel="prev">When 2 guys talk, its not always about girls/sports ;)</a></div><div class="nav-next"><a href="https://blog.anudeep2011.com/machine-learning-everywhere-why-not-in-competitive-programming/" rel="next">Machine learning everywhere, why not in Competitive programming?</a></div></div>
+	</nav>
+						
+
+			
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-5123">
+        <div id="dsq-comment-header-5123" class="dsq-comment-header">
+            <cite id="dsq-cite-5123">
+                <span id="dsq-author-user-5123">Arpit Agrawal</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5123" class="dsq-comment-body">
+            <div id="dsq-comment-message-5123" class="dsq-comment-message"><p>This is my implementation of DeQuery <a href="http://pastebin.com/Buic4fVr" rel="nofollow">http://pastebin.com/Buic4fVr</a><br />
+I am getting NZEC can anyone please look into my code and find the bug.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-5122">
+        <div id="dsq-comment-header-5122" class="dsq-comment-header">
+            <cite id="dsq-cite-5122">
+                <span id="dsq-author-user-5122">Arpit Agrawal</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5122" class="dsq-comment-body">
+            <div id="dsq-comment-message-5122" class="dsq-comment-message"><p>What is the logic behind taking a block size of sqrt(N).</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-5115">
+        <div id="dsq-comment-header-5115" class="dsq-comment-header">
+            <cite id="dsq-cite-5115">
+                <span id="dsq-author-user-5115">Saurabh Srivastava</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5115" class="dsq-comment-body">
+            <div id="dsq-comment-message-5115" class="dsq-comment-message"><p>Why the block size SQRT(N), why not something else like log(N) ?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-5124">
+        <div id="dsq-comment-header-5124" class="dsq-comment-header">
+            <cite id="dsq-cite-5124">
+                <span id="dsq-author-user-5124">nabil1997</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5124" class="dsq-comment-body">
+            <div id="dsq-comment-message-5124" class="dsq-comment-message"><p>If your block size is log(N), then number of block sizes become N/log(N). In that case, you have to traverse N/log(N) blocks to get the answer in the worst case.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-5113">
+        <div id="dsq-comment-header-5113" class="dsq-comment-header">
+            <cite id="dsq-cite-5113">
+                <span id="dsq-author-user-5113">Sriraj R</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5113" class="dsq-comment-body">
+            <div id="dsq-comment-message-5113" class="dsq-comment-message"><p>In Powerful Array, I took the BLOCK value to be 448=sqrt(200000). However it gave a TLE. Increasing block value to 1000 gave me AC. Can you please explain the reason?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-5094">
+        <div id="dsq-comment-header-5094" class="dsq-comment-header">
+            <cite id="dsq-cite-5094">
+                <a id="dsq-author-user-5094" href="https://plus.google.com/100475681199279088049" target="_blank" rel="nofollow">Shubajit Saha</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5094" class="dsq-comment-body">
+            <div id="dsq-comment-message-5094" class="dsq-comment-message"><p>Hi Anudeep,thanks for the amazing post. Although not a bug but I would like to mention to the readers that the code snippet given in the blog suffers from a logical counter intuitiveness  that remove operation of  an element can happen before add operation on it. For example n = 8, and we have 2 queries (0,7) ans (1,4) then after ordering the queries appear in (1,4)  followed by (0,7) and the code snippet removes 0th element while increasing the left pointer while it was not added previously. Now this may cause serious problem because in some problems where this assumption is necessary to ensure certain quantity does not become negative. For problems that require algebraic manipulations e.g powerful array , this is not a problem because algebraic operations like addition and subtraction  are order independent. For example in problem <a href="http://codeforces.com/problemset/problem/375/D" rel="nofollow">http://codeforces.com/problemset/problem/375/D</a>  from codeforces you need to maintain a BIT of frequency of occurrences of an element and if remove is permitted before addition than this frequency can go negative and there by causing out of index or infinite loop problems. A simple get around is to first group the add while loops followed by remove while loops instead of grouping them on the basis of left and right pointers to maintain the logical intuitiveness. I think it will be wise to mention this in the blog.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-5091">
+        <div id="dsq-comment-header-5091" class="dsq-comment-header">
+            <cite id="dsq-cite-5091">
+                <a id="dsq-author-user-5091" href="https://plus.google.com/101639475007471501553" target="_blank" rel="nofollow">Raiya Deep</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5091" class="dsq-comment-body">
+            <div id="dsq-comment-message-5091" class="dsq-comment-message"><p>Why my code getting runtime error ?? As i guess, itsindex out of bound, but Where is index out of bound happening ?? Anyone can help ??<br />
+Dquery Problem Link : <a href="http://www.spoj.com/problems/DQUERY/" rel="nofollow">http://www.spoj.com/problems/DQUERY/</a><br />
+Ideone code link : <a href="http://ideone.com/kv6j17" rel="nofollow">http://ideone.com/kv6j17</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-5087">
+        <div id="dsq-comment-header-5087" class="dsq-comment-header">
+            <cite id="dsq-cite-5087">
+                <span id="dsq-author-user-5087">Kishore</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5087" class="dsq-comment-body">
+            <div id="dsq-comment-message-5087" class="dsq-comment-message"><p>algorithms involving segment trees seem far better than this i think&#8230;<br />
+constructing segment tree takes O(N) time and then if Q queries are there then it could be done in just O(Q * lg N) time.. Where N is the size of array&#8230;<br />
+where this MO&#8217;s algorithm could beat the Segment trees??<br />
+Could you give some scenarios??</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-5086">
+        <div id="dsq-comment-header-5086" class="dsq-comment-header">
+            <cite id="dsq-cite-5086">
+                <span id="dsq-author-user-5086">alphaguy4</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5086" class="dsq-comment-body">
+            <div id="dsq-comment-message-5086" class="dsq-comment-message"><p><a href="https://www.codechef.com/problems/CLOSEFAR" rel="nofollow">https://www.codechef.com/problems/CLOSEFAR</a><br />
+This problem brought me here&#8230; !</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-5082">
+        <div id="dsq-comment-header-5082" class="dsq-comment-header">
+            <cite id="dsq-cite-5082">
+                <a id="dsq-author-user-5082" href="http://gravatar.com/tanmoy1228" target="_blank" rel="nofollow">tanmoy1228</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5082" class="dsq-comment-body">
+            <div id="dsq-comment-message-5082" class="dsq-comment-message"><p>can anyone give me any idea about  <a href="https://www.codechef.com/problems/GERALD07" rel="nofollow">https://www.codechef.com/problems/GERALD07</a><br />
+this problem&#8230;.<br />
+can not understand the editorial<br />
+thanks</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-5089">
+        <div id="dsq-comment-header-5089" class="dsq-comment-header">
+            <cite id="dsq-cite-5089">
+                <span id="dsq-author-user-5089">coded_mind</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5089" class="dsq-comment-body">
+            <div id="dsq-comment-message-5089" class="dsq-comment-message"><p>I haven&#8217;t seen the editorial but I think that the problem can be solved using SQRT_Decmoposition and MO&#8217;s approach.<br />
+First Point : let&#8217;s say there are e no. of edges, write down all the edges from 1 to e as 1,2,3, . . . , e<br />
+now do the sqrt decomposition of this list and for each chunk calculate &#8220;how many connected components will remain if the graph only had these edges&#8221;.<br />
+After decomposition is over , be ready to answer the queries via MO&#8217;s approach by sorting them in the correct order.<br />
+Now assume that answer for [a,b] is known in previous step , the left point of this interval also falls in the same chunk in which the left point of previous one falls ,this will look either like<br />
+[a+k,b+j] or [a-k,b+j] or [a+k,b] or [a-k,b], where j,k are positive, j takes at most e-1 and k takes at most sqrt(e), hence guaranteeing the MO&#8217;s suggested complexity.<br />
+The big issue is to find out how do we calculate the answer for this new interval, but this should not be an issue if you know well how to use UNION-FIND Data Structure.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-5006">
+        <div id="dsq-comment-header-5006" class="dsq-comment-header">
+            <cite id="dsq-cite-5006">
+                <span id="dsq-author-user-5006">Abhishek Kumar</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-5006" class="dsq-comment-body">
+            <div id="dsq-comment-message-5006" class="dsq-comment-message"><p>why I am getting WA  🙁<br />
+can anyone provide some testcase where my code gives wrong answer,I have tried many testcases but couldn&#8217;t find any mistake.<br />
+problem- <a href="http://www.spoj.com/problems/DQUERY/" rel="nofollow">http://www.spoj.com/problems/DQUERY/</a><br />
+code-https://ideone.com/4RJi9p</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-4704">
+        <div id="dsq-comment-header-4704" class="dsq-comment-header">
+            <cite id="dsq-cite-4704">
+                <span id="dsq-author-user-4704">Ashish Tilokani</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4704" class="dsq-comment-body">
+            <div id="dsq-comment-message-4704" class="dsq-comment-message"><p>Short and easy to understand explanation. </p>
+<p>This problem is from a recent contest which motivated me to understand this algo. </p>
+<p><a href="http://codeforces.com/contest/617/problem/E" rel="nofollow">http://codeforces.com/contest/617/problem/E</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4646">
+        <div id="dsq-comment-header-4646" class="dsq-comment-header">
+            <cite id="dsq-cite-4646">
+                <span id="dsq-author-user-4646">Jaswant Singh</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4646" class="dsq-comment-body">
+            <div id="dsq-comment-message-4646" class="dsq-comment-message"><p>Another very useful and new algo &#8230; thanks anudeep for such a nice effort .</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-4590">
+        <div id="dsq-comment-header-4590" class="dsq-comment-header">
+            <cite id="dsq-cite-4590">
+                <a id="dsq-author-user-4590" href="http://none" target="_blank" rel="nofollow">karthik</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4590" class="dsq-comment-body">
+            <div id="dsq-comment-message-4590" class="dsq-comment-message"><p>With fast I/o and inline declarations<br />
+Powerful array : <a href="http://ideone.com/mc0fNT" rel="nofollow">http://ideone.com/mc0fNT</a><br />
+Dquery :<a href="http://ideone.com/vwX6mY" rel="nofollow">http://ideone.com/vwX6mY</a></p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-4943">
+        <div id="dsq-comment-header-4943" class="dsq-comment-header">
+            <cite id="dsq-cite-4943">
+                <span id="dsq-author-user-4943">Sahil Arora</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4943" class="dsq-comment-body">
+            <div id="dsq-comment-message-4943" class="dsq-comment-message"><p>Powerful array does not need fast IO, if you use cin.tie(NULL);</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-2" id="dsq-comment-4983">
+        <div id="dsq-comment-header-4983" class="dsq-comment-header">
+            <cite id="dsq-cite-4983">
+                <span id="dsq-author-user-4983">Suraj</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4983" class="dsq-comment-body">
+            <div id="dsq-comment-message-4983" class="dsq-comment-message"><p>Can you please tell mistake in my add() and remove() function? <a href="http://codeforces.com/contest/86/submission/17091420" rel="nofollow">My Solution</a><br />
+Thank You.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4564">
+        <div id="dsq-comment-header-4564" class="dsq-comment-header">
+            <cite id="dsq-cite-4564">
+                <a id="dsq-author-user-4564" href="http://gravatar.com/sunildinday" target="_blank" rel="nofollow">sunildinday</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4564" class="dsq-comment-body">
+            <div id="dsq-comment-message-4564" class="dsq-comment-message"><p>Sir why we take block size always 555</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-4554">
+        <div id="dsq-comment-header-4554" class="dsq-comment-header">
+            <cite id="dsq-cite-4554">
+                <a id="dsq-author-user-4554" href="https://plus.google.com/+karankapoor007" target="_blank" rel="nofollow">Karan Kapoor</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4554" class="dsq-comment-body">
+            <div id="dsq-comment-message-4554" class="dsq-comment-message"><p>Anudeep i could not understand the update function in Powerful Array</p>
+<p>I used the following which gave me TLE :</p>
+<p>void add(long long int position) {<br />
+	cnt[a[position]]++;<br />
+    answer=answer+cnt[a[position]]*cnt[a[position]]*a[position]-(cnt[a[position]]-1)*(cnt[a[position]]-1)*a[position];<br />
+}</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-4557">
+        <div id="dsq-comment-header-4557" class="dsq-comment-header">
+            <cite id="dsq-cite-4557">
+                <a id="dsq-author-user-4557" href="https://plus.google.com/+karankapoor007" target="_blank" rel="nofollow">Karan Kapoor</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4557" class="dsq-comment-body">
+            <div id="dsq-comment-message-4557" class="dsq-comment-message"><p>Understood 😛 It was a small modification 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-2" id="dsq-comment-4864">
+        <div id="dsq-comment-header-4864" class="dsq-comment-header">
+            <cite id="dsq-cite-4864">
+                <span id="dsq-author-user-4864">Sahil Arora</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4864" class="dsq-comment-body">
+            <div id="dsq-comment-message-4864" class="dsq-comment-message"><p>Hey, Look who I found! 😀</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4536">
+        <div id="dsq-comment-header-4536" class="dsq-comment-header">
+            <cite id="dsq-cite-4536">
+                <a id="dsq-author-user-4536" href="http://gravatar.com/ps06756" target="_blank" rel="nofollow">Pratik Singhal</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4536" class="dsq-comment-body">
+            <div id="dsq-comment-message-4536" class="dsq-comment-message"><p>We can use a heap with square root decomposition to find the minimum of the range.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-4440">
+        <div id="dsq-comment-header-4440" class="dsq-comment-header">
+            <cite id="dsq-cite-4440">
+                <span id="dsq-author-user-4440">Pandu</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4440" class="dsq-comment-body">
+            <div id="dsq-comment-message-4440" class="dsq-comment-message"><p>What should do if sqrt(n) is floating point value?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4428">
+        <div id="dsq-comment-header-4428" class="dsq-comment-header">
+            <cite id="dsq-cite-4428">
+                <a id="dsq-author-user-4428" href="http://gravatar.com/abhishekbind2013" target="_blank" rel="nofollow">abhishekbind2013</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4428" class="dsq-comment-body">
+            <div id="dsq-comment-message-4428" class="dsq-comment-message"><p><a href="http://www.spoj.com/problems/ZQUERY/" rel="nofollow">http://www.spoj.com/problems/ZQUERY/</a><br />
+This problem can be done using Mo&#8217;s algorithm.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-4040">
+        <div id="dsq-comment-header-4040" class="dsq-comment-header">
+            <cite id="dsq-cite-4040">
+                <span id="dsq-author-user-4040">prakhar</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4040" class="dsq-comment-body">
+            <div id="dsq-comment-message-4040" class="dsq-comment-message"><p>very nice approach to MO&#8217;s algorithm&#8230;.i just dont understand why do we get wrong answer if we change the code in DQUERY  for the right pointer to<br />
+while(current_right  right) {<br />
+            remove(current_right]);<br />
+            current_right&#8211;;<br />
+        }<br />
+and give the initial value of current_right =-1 and current_left=0<br />
+its give the correct answer for test cases but wrong on SPOJ</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-3835">
+        <div id="dsq-comment-header-3835" class="dsq-comment-header">
+            <cite id="dsq-cite-3835">
+                <a id="dsq-author-user-3835" href="https://plus.google.com/+AkshayAradhya" target="_blank" rel="nofollow">Akshay Aradhya</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3835" class="dsq-comment-body">
+            <div id="dsq-comment-message-3835" class="dsq-comment-message"><p>Hey Anudeep I tried to solve this : <a href="https://www.hackerearth.com/july-clash-15/algorithm/something-genuine" rel="nofollow">https://www.hackerearth.com/july-clash-15/algorithm/something-genuine</a> Using the above method.</p>
+<p>But the only difference in this problem is that I have to calculate the number of unique elements in each sub array and there are N*(N+1)/2 possible sub arrays.How do I solve it ?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-3581">
+        <div id="dsq-comment-header-3581" class="dsq-comment-header">
+            <cite id="dsq-cite-3581">
+                <a id="dsq-author-user-3581" href="http://gravatar.com/anandodu" target="_blank" rel="nofollow">kichu_pari_na</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3581" class="dsq-comment-body">
+            <div id="dsq-comment-message-3581" class="dsq-comment-message"><p>another problem on MO&#8217;s algorithm:</p>
+<p><a href="http://www.spoj.com/problems/ZQUERY/" rel="nofollow">http://www.spoj.com/problems/ZQUERY/</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-3522">
+        <div id="dsq-comment-header-3522" class="dsq-comment-header">
+            <cite id="dsq-cite-3522">
+                <a id="dsq-author-user-3522" href="http://Shukla" target="_blank" rel="nofollow">Shubham</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3522" class="dsq-comment-body">
+            <div id="dsq-comment-message-3522" class="dsq-comment-message"><p>In your solution of DQUERY you fixed the block size according to max no of elements possible. So we do not have to change the block size according to no of elements given in the question every time?<br />
+Like if n = 10 then also block size remains 555 ?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-3519">
+        <div id="dsq-comment-header-3519" class="dsq-comment-header">
+            <cite id="dsq-cite-3519">
+                <a id="dsq-author-user-3519" href="http://gravatar.com/phoenixcharlie" target="_blank" rel="nofollow">free soul</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3519" class="dsq-comment-body">
+            <div id="dsq-comment-message-3519" class="dsq-comment-message"><p>no need for fast i/o for dquery.. got acc using your concept just declare remove and add inline functions.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-3487">
+        <div id="dsq-comment-header-3487" class="dsq-comment-header">
+            <cite id="dsq-cite-3487">
+                <span id="dsq-author-user-3487">Shubham Sharma</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3487" class="dsq-comment-body">
+            <div id="dsq-comment-message-3487" class="dsq-comment-message"><p><a href="http://ideone.com/mpSL6G" rel="nofollow">http://ideone.com/mpSL6G</a><br />
+Can you please tell me where am I going wrong ..<br />
+I implemented Mo&#8217;s Algorithm and yet I get a TLE&#8230;<br />
+Is the implementation correct&#8230;<br />
+COmpared with your code I found it almost identical&#8230;.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-3392">
+        <div id="dsq-comment-header-3392" class="dsq-comment-header">
+            <cite id="dsq-cite-3392">
+                <span id="dsq-author-user-3392">ma5termind</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3392" class="dsq-comment-body">
+            <div id="dsq-comment-message-3392" class="dsq-comment-message"><p>hello Anudeep,</p>
+<p>problem : powerful array can be solved online with the same complexity O((Q+N)*sqrt(N)). we can discuss it if u want.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-3279">
+        <div id="dsq-comment-header-3279" class="dsq-comment-header">
+            <cite id="dsq-cite-3279">
+                <span id="dsq-author-user-3279">darkshadow</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3279" class="dsq-comment-body">
+            <div id="dsq-comment-message-3279" class="dsq-comment-message"><p>Hi, can you explain me how to modify ADD and REMOVE function to solve powerful array problem of codeforces.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-3020">
+        <div id="dsq-comment-header-3020" class="dsq-comment-header">
+            <cite id="dsq-cite-3020">
+                <span id="dsq-author-user-3020">Peeyush Yadav</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3020" class="dsq-comment-body">
+            <div id="dsq-comment-message-3020" class="dsq-comment-message"><p>How to find max. element in range. can you please explain the remove part in detail ?<br />
+I am not able to understand this &#8220;we can use a set to add elements, remove elements and report minimum&#8221;</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-3014">
+        <div id="dsq-comment-header-3014" class="dsq-comment-header">
+            <cite id="dsq-cite-3014">
+                <a id="dsq-author-user-3014" href="https://plus.google.com/110275738725663621108" target="_blank" rel="nofollow">mukul gupta</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-3014" class="dsq-comment-body">
+            <div id="dsq-comment-message-3014" class="dsq-comment-message"><p>why we can&#8217;t sort on basis of l value instead of block value.please explain????</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2956">
+        <div id="dsq-comment-header-2956" class="dsq-comment-header">
+            <cite id="dsq-cite-2956">
+                <span id="dsq-author-user-2956">Rajat De</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2956" class="dsq-comment-body">
+            <div id="dsq-comment-message-2956" class="dsq-comment-message"><p><a href="http://www.spoj.com/problems/FREQUENT/" rel="nofollow">http://www.spoj.com/problems/FREQUENT/</a><br />
+Sir i solved this problem using segmentree but i think it can be solved with MO&#8217;s algorithm too . if it can be solved using MO&#8217;s algorithm , can you tell how to do so?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2937">
+        <div id="dsq-comment-header-2937" class="dsq-comment-header">
+            <cite id="dsq-cite-2937">
+                <a id="dsq-author-user-2937" href="http://gravatar.com/sullencanyon" target="_blank" rel="nofollow">Abhishek Yadav</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2937" class="dsq-comment-body">
+            <div id="dsq-comment-message-2937" class="dsq-comment-message"><p>Thank you for this valuable post</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2712">
+        <div id="dsq-comment-header-2712" class="dsq-comment-header">
+            <cite id="dsq-cite-2712">
+                <span id="dsq-author-user-2712">Rajon Bardhan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2712" class="dsq-comment-body">
+            <div id="dsq-comment-message-2712" class="dsq-comment-message"><p>Link of two problems . I solved the problems by MO&#8217;s algorithm .<br />
+<a href="http://lightoj.com/volume_showproblem.php?problem=1188" rel="nofollow">http://lightoj.com/volume_showproblem.php?problem=1188</a><br />
+<a href="http://lightoj.com/volume_showproblem.php?problem=1339" rel="nofollow">http://lightoj.com/volume_showproblem.php?problem=1339</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2650">
+        <div id="dsq-comment-header-2650" class="dsq-comment-header">
+            <cite id="dsq-cite-2650">
+                <span id="dsq-author-user-2650">Himanshu Jaju</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2650" class="dsq-comment-body">
+            <div id="dsq-comment-message-2650" class="dsq-comment-message"><p>Hey, the links to the problems are not linked properly I guess.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2517">
+        <div id="dsq-comment-header-2517" class="dsq-comment-header">
+            <cite id="dsq-cite-2517">
+                <a id="dsq-author-user-2517" href="https://github.com/rajonaust" target="_blank" rel="nofollow">Rajon Bardhan</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2517" class="dsq-comment-body">
+            <div id="dsq-comment-message-2517" class="dsq-comment-message"><p>Sir ,<br />
+Tanks for a nice tutorial !!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2151">
+        <div id="dsq-comment-header-2151" class="dsq-comment-header">
+            <cite id="dsq-cite-2151">
+                <span id="dsq-author-user-2151">Utkarsh Saxena</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2151" class="dsq-comment-body">
+            <div id="dsq-comment-message-2151" class="dsq-comment-message"><p>Another example can be<br />
+Number of inversions in the subarray [L,R]<br />
+(O(N * Sqrt(N) * log N) algorithm)</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor even depth-2" id="dsq-comment-2323">
+        <div id="dsq-comment-header-2323" class="dsq-comment-header">
+            <cite id="dsq-cite-2323">
+                <span id="dsq-author-user-2323">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2323" class="dsq-comment-body">
+            <div id="dsq-comment-message-2323" class="dsq-comment-message"><p>Yes, I added a problem from codechef which asks for the same. Thank you</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-2088">
+        <div id="dsq-comment-header-2088" class="dsq-comment-header">
+            <cite id="dsq-cite-2088">
+                <a id="dsq-author-user-2088" href="http://www.amarjeetamit.blogspot.in" target="_blank" rel="nofollow">Amarjeet Singh</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2088" class="dsq-comment-body">
+            <div id="dsq-comment-message-2088" class="dsq-comment-message"><p>we get Merge Sort Algorithms code please</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-2003">
+        <div id="dsq-comment-header-2003" class="dsq-comment-header">
+            <cite id="dsq-cite-2003">
+                <a id="dsq-author-user-2003" href="http://sanugupta.wordpress.com" target="_blank" rel="nofollow">Sanu Kumar Gupta</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2003" class="dsq-comment-body">
+            <div id="dsq-comment-message-2003" class="dsq-comment-message"><p>update your solution of DQUERY.there are lot of bugs there.<br />
+ie:<br />
+range of N is 3*10^4 not 3*105^5<br />
+BLOCK should be 174 not 555<br />
+here 1&lt;=a[i]&lt;=10^6 not a[i]&lt;=N ..so size of the arrays that you declared are wrong.<br />
+BTW thank you for this nice explanation on MOs algorithm.Learnt a lot 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-2002">
+        <div id="dsq-comment-header-2002" class="dsq-comment-header">
+            <cite id="dsq-cite-2002">
+                <span id="dsq-author-user-2002">Deepak</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2002" class="dsq-comment-body">
+            <div id="dsq-comment-message-2002" class="dsq-comment-message"><p>This question also uses the same concept, I guess 😉 :<br />
+<a href="http://codeforces.com/contest/86/problem/D" rel="nofollow">http://codeforces.com/contest/86/problem/D</a></p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor even depth-2" id="dsq-comment-2320">
+        <div id="dsq-comment-header-2320" class="dsq-comment-header">
+            <cite id="dsq-cite-2320">
+                <span id="dsq-author-user-2320">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2320" class="dsq-comment-body">
+            <div id="dsq-comment-message-2320" class="dsq-comment-message"><p>Thank you.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-1982">
+        <div id="dsq-comment-header-1982" class="dsq-comment-header">
+            <cite id="dsq-cite-1982">
+                <span id="dsq-author-user-1982">Aditya Shah</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1982" class="dsq-comment-body">
+            <div id="dsq-comment-message-1982" class="dsq-comment-message"><p>Here are two other problems : </p>
+<p><a href="http://www.codechef.com/problems/IITI15" rel="nofollow">http://www.codechef.com/problems/IITI15</a></p>
+<p><a href="http://codeforces.com/contest/351/problem/D" rel="nofollow">http://codeforces.com/contest/351/problem/D</a></p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor even depth-2" id="dsq-comment-2319">
+        <div id="dsq-comment-header-2319" class="dsq-comment-header">
+            <cite id="dsq-cite-2319">
+                <span id="dsq-author-user-2319">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2319" class="dsq-comment-body">
+            <div id="dsq-comment-message-2319" class="dsq-comment-message"><p>Thanks for the links.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-1980">
+        <div id="dsq-comment-header-1980" class="dsq-comment-header">
+            <cite id="dsq-cite-1980">
+                <span id="dsq-author-user-1980">cbgiri</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1980" class="dsq-comment-body">
+            <div id="dsq-comment-message-1980" class="dsq-comment-message"><p>Sir,<br />
+I think there is bug in your  slide modification code which run in 0(n*n).</p>
+<p>if suppose if have an array of 9 element indexing from 0</p>
+<p>1 2 3 1 2 3 1 2 3<br />
+and there are<br />
+6 queries<br />
+query:-<br />
+1)  L=0  R=8<br />
+answer should be 3 but came 2                      //wrong answer<br />
+2) L=1 R=7<br />
+answer should be 1 and also came 1            //right answer<br />
+3) L=2 R=8<br />
+answer should be 1 and also came 1            //right answer<br />
+4) L=4 R=7<br />
+answer should be 0 but came 1                      //wrong answer<br />
+5) L=2 R=8<br />
+answer should be 1 and also came 1            //right answer<br />
+3) L=2 R=7<br />
+answer should be 0 but came 1                   //wrong answer</p>
+<p>Please correct me if i am wrong.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-1981">
+        <div id="dsq-comment-header-1981" class="dsq-comment-header">
+            <cite id="dsq-cite-1981">
+                <span id="dsq-author-user-1981">cbgiri</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1981" class="dsq-comment-body">
+            <div id="dsq-comment-message-1981" class="dsq-comment-message"><p>Sir, u wrote it correctly in sample code but in blog u wrote it wrongly . so please update this 🙂 .</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor odd alt depth-3" id="dsq-comment-1989">
+        <div id="dsq-comment-header-1989" class="dsq-comment-header">
+            <cite id="dsq-cite-1989">
+                <span id="dsq-author-user-1989">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1989" class="dsq-comment-body">
+            <div id="dsq-comment-message-1989" class="dsq-comment-message"><p>I know it, but to keep things simple i did not include the border cases clearly.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-4" id="dsq-comment-1996">
+        <div id="dsq-comment-header-1996" class="dsq-comment-header">
+            <cite id="dsq-cite-1996">
+                <span id="dsq-author-user-1996">cbgiri</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1996" class="dsq-comment-body">
+            <div id="dsq-comment-message-1996" class="dsq-comment-message"><p>k sir.<br />
+and happy New Year 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor odd alt depth-2" id="dsq-comment-2321">
+        <div id="dsq-comment-header-2321" class="dsq-comment-header">
+            <cite id="dsq-cite-2321">
+                <span id="dsq-author-user-2321">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2321" class="dsq-comment-body">
+            <div id="dsq-comment-message-2321" class="dsq-comment-message"><p>Yes, it can be wrong. I really did not look into the boundary conditions and implementation details, scope of this article is to introduce and explain the algorithm and provide enough code so that the reader can implement it on its own.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1975">
+        <div id="dsq-comment-header-1975" class="dsq-comment-header">
+            <cite id="dsq-cite-1975">
+                <span id="dsq-author-user-1975">Dhruv</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1975" class="dsq-comment-body">
+            <div id="dsq-comment-message-1975" class="dsq-comment-message"><p>Hi Anudeep,<br />
+Thanks a lot for this blog, after attempting RRJAM in Dec cookoff I had been trying to read about sqrt decomposition, fenwick trees, etc. I also looked at your solution, but couldn&#8217;t follow it completely. I know its a lot to ask, but if you could explain your RRJAM solution, it would really be helpful 🙂<br />
+PS: If you have any relevant resources to learns these related topics, pls do share them too.</p>
+<p>Thanks</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-1972">
+        <div id="dsq-comment-header-1972" class="dsq-comment-header">
+            <cite id="dsq-cite-1972">
+                <span id="dsq-author-user-1972">Pulkit</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1972" class="dsq-comment-body">
+            <div id="dsq-comment-message-1972" class="dsq-comment-message"><p>Hi! Wonderful explanation. 🙂<br />
+ I have been trying GERALD07 <a href="http://www.codechef.com/MARCH14/problems/GERALD07" rel="nofollow">http://www.codechef.com/MARCH14/problems/GERALD07</a>   , but unable to understand . Can you post something for the problem to help more like me facing the same issue.<br />
+Thank you 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1965">
+        <div id="dsq-comment-header-1965" class="dsq-comment-header">
+            <cite id="dsq-cite-1965">
+                <span id="dsq-author-user-1965">red</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1965" class="dsq-comment-body">
+            <div id="dsq-comment-message-1965" class="dsq-comment-message"><p>very good and clean explanation thanks Anudeep 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-1962">
+        <div id="dsq-comment-header-1962" class="dsq-comment-header">
+            <cite id="dsq-cite-1962">
+                <span id="dsq-author-user-1962">programmer</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1962" class="dsq-comment-body">
+            <div id="dsq-comment-message-1962" class="dsq-comment-message"><p>DQUERY Done 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1957">
+        <div id="dsq-comment-header-1957" class="dsq-comment-header">
+            <cite id="dsq-cite-1957">
+                <a id="dsq-author-user-1957" href="http://twitter.com/karthikabinav" target="_blank" rel="nofollow">Karthik Abinav (@karthikabinav)</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1957" class="dsq-comment-body">
+            <div id="dsq-comment-message-1957" class="dsq-comment-message"><p>Out of curiosity, is this name used commonly in the literature? Or is this name used specifically by competitive programming community? I searched online for a reference to MO&#8217;s algorithm and could not find it.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor odd alt depth-2" id="dsq-comment-1961">
+        <div id="dsq-comment-header-1961" class="dsq-comment-header">
+            <cite id="dsq-cite-1961">
+                <span id="dsq-author-user-1961">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1961" class="dsq-comment-body">
+            <div id="dsq-comment-message-1961" class="dsq-comment-message"><p>MO name is used only in china.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-1953">
+        <div id="dsq-comment-header-1953" class="dsq-comment-header">
+            <cite id="dsq-cite-1953">
+                <a id="dsq-author-user-1953" href="https://www.facebook.com/imadityakumarghosh" target="_blank" rel="nofollow">Aditya Kumar Ghosh</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1953" class="dsq-comment-body">
+            <div id="dsq-comment-message-1953" class="dsq-comment-message"><p>i just confused with : what are these lines saying ??</p>
+<p>How does the final order look like?<br />
+All the queries are first ordered in ascending order of their block number (block number is the block in which its opening falls). Ties are ordered in ascending order of their R value.<br />
+For example consider following queries and assume we have 3 blocks each of size 3.<br />
+{0, 3} {1, 7} {2, 8} {7, 8} {4, 8} {4, 4} {1, 2}<br />
+Let us re-order them based on their block number.<br />
+{0, 3} {1, 7} {2, 8} {1, 2} {4, 8} {4, 4} {7, 8}<br />
+Now let us re-order ties based on their R value.<br />
+{1, 2} {0, 3} {1, 7} {2, 8} {4, 4} {4, 8} {7, 8}</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor odd alt depth-2" id="dsq-comment-1955">
+        <div id="dsq-comment-header-1955" class="dsq-comment-header">
+            <cite id="dsq-cite-1955">
+                <span id="dsq-author-user-1955">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1955" class="dsq-comment-body">
+            <div id="dsq-comment-message-1955" class="dsq-comment-message"><p>What exactly you did not understand? Those lines summarize the paras above those and gives an example.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-1956">
+        <div id="dsq-comment-header-1956" class="dsq-comment-header">
+            <cite id="dsq-cite-1956">
+                <a id="dsq-author-user-1956" href="https://www.facebook.com/sriharsha4444" target="_blank" rel="nofollow">Sriharsha Sammeta</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1956" class="dsq-comment-body">
+            <div id="dsq-comment-message-1956" class="dsq-comment-message"><p>Hi Anudeep,<br />
+Firstly, good initiative with posting algorithms that are not very familiar to most. Please do continue this.<br />
+I too didn&#8217;t understand how (1,2) came after (2,8) after block wise ordering. Isn&#8217;t the division of inputs into blocks is based on L-value And then ties are sorted based on R-value?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor odd alt depth-4" id="dsq-comment-1960">
+        <div id="dsq-comment-header-1960" class="dsq-comment-header">
+            <cite id="dsq-cite-1960">
+                <span id="dsq-author-user-1960">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1960" class="dsq-comment-body">
+            <div id="dsq-comment-message-1960" class="dsq-comment-message"><p>Initial ordering is block based. As i told the block size is 3, L = 0,1,2 will be in the same block.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-5" id="dsq-comment-1967">
+        <div id="dsq-comment-header-1967" class="dsq-comment-header">
+            <cite id="dsq-cite-1967">
+                <a id="dsq-author-user-1967" href="https://www.facebook.com/imadityakumarghosh" target="_blank" rel="nofollow">Aditya Kumar Ghosh</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1967" class="dsq-comment-body">
+            <div id="dsq-comment-message-1967" class="dsq-comment-message"><p>how the order has been done means<br />
+firstly it has been done on blocks<br />
+and then on block numbers and on the basis of R values<br />
+so could you help please</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor odd alt depth-5" id="dsq-comment-1969">
+        <div id="dsq-comment-header-1969" class="dsq-comment-header">
+            <cite id="dsq-cite-1969">
+                <span id="dsq-author-user-1969">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1969" class="dsq-comment-body">
+            <div id="dsq-comment-message-1969" class="dsq-comment-message"><p>1) Block number.<br />
+2) On ties with block number, then on R value</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1952">
+        <div id="dsq-comment-header-1952" class="dsq-comment-header">
+            <cite id="dsq-cite-1952">
+                <a id="dsq-author-user-1952" href="https://www.facebook.com/imadityakumarghosh" target="_blank" rel="nofollow">Aditya Kumar Ghosh</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1952" class="dsq-comment-body">
+            <div id="dsq-comment-message-1952" class="dsq-comment-message"><p>Awesome algo !!!<br />
+Thnk u for posting sir 🙂</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-1944">
+        <div id="dsq-comment-header-1944" class="dsq-comment-header">
+            <cite id="dsq-cite-1944">
+                <span id="dsq-author-user-1944">ma5termind</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1944" class="dsq-comment-body">
+            <div id="dsq-comment-message-1944" class="dsq-comment-message"><p>if some one feel need here is link to my solution .. I think i have coded in such a manner that one can understand .. after putting some efforts ..</p>
+<p><a href="https://www.hackerrank.com/contests/w12/challenges/white-falcon-and-tree/submissions/code/2445084" rel="nofollow">https://www.hackerrank.com/contests/w12/challenges/white-falcon-and-tree/submissions/code/2445084</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1943">
+        <div id="dsq-comment-header-1943" class="dsq-comment-header">
+            <cite id="dsq-cite-1943">
+                <span id="dsq-author-user-1943">ma5termind</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1943" class="dsq-comment-body">
+            <div id="dsq-comment-message-1943" class="dsq-comment-message"><p>Hello Anudeep2011</p>
+<p>Add this to the above list . This one is a tough problem which i solved a month ago using sqrt decomposition + heavy light decomposition ..</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-1945">
+        <div id="dsq-comment-header-1945" class="dsq-comment-header">
+            <cite id="dsq-cite-1945">
+                <span id="dsq-author-user-1945">ma5termind</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1945" class="dsq-comment-body">
+            <div id="dsq-comment-message-1945" class="dsq-comment-message"><p>Problem link :<br />
+<a href="https://www.hackerrank.com/contests/w12/challenges/white-falcon-and-tree" rel="nofollow">https://www.hackerrank.com/contests/w12/challenges/white-falcon-and-tree</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment byuser comment-author-anudeep2011 bypostauthor even depth-2" id="dsq-comment-1946">
+        <div id="dsq-comment-header-1946" class="dsq-comment-header">
+            <cite id="dsq-cite-1946">
+                <span id="dsq-author-user-1946">anudeep2011</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1946" class="dsq-comment-body">
+            <div id="dsq-comment-message-1946" class="dsq-comment-message"><p>Hi, Thank you.<br />
+This post is for MO&#8217;s algorithm specially, where as the problem you mentioned is sqrt decomposition but different from MO&#8217;s.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'https://blog.anudeep2011.com/mos-algorithm/';
+var disqus_identifier = '159 http://blog.anudeep2011.com/?p=159';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'anudeep2011';
+var disqus_title = "MO&#8217;s Algorithm (Query square root decomposition)";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=159';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="wysija-4" class="widget widget_wysija"><h3 class="widget-title">Subscribe to our Newsletter</h3><div class="widget_wysija_cont"><div id="msg-form-wysija-4" class="wysija-msg ajax"></div><form id="form-wysija-4" method="post" action="#wysija" class="widget_wysija">
+<p class="wysija-paragraph">
+    
+    
+    	<input type="text" name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Email*" placeholder="Email*" value="" />
+    
+    
+    
+    <span class="abs-req">
+        <input type="text" name="wysija[user][abs][email]" class="wysija-input validated[abs][email]" value="" />
+    </span>
+    
+</p>
+<input class="wysija-submit wysija-submit-field" type="submit" value="Subscribe!" />
+
+    <input type="hidden" name="form_id" value="2" />
+    <input type="hidden" name="action" value="save" />
+    <input type="hidden" name="controller" value="subscribers" />
+    <input type="hidden" value="1" name="wysija-page" />
+
+    
+        <input type="hidden" name="wysija[user_list][list_ids]" value="3" />
+    
+ </form></div></aside><aside id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="https://blog.anudeep2011.com/category/algorithms/" >Algorithms</a> (2)
+</li>
+	<li class="cat-item cat-item-8"><a href="https://blog.anudeep2011.com/category/data-structures/" >Data Structures</a> (1)
+</li>
+	<li class="cat-item cat-item-12"><a href="https://blog.anudeep2011.com/category/machine-learning/" >Machine Learning</a> (1)
+</li>
+	<li class="cat-item cat-item-10"><a href="https://blog.anudeep2011.com/category/segment-trees/" >Segment trees</a> (2)
+</li>
+	<li class="cat-item cat-item-9"><a href="https://blog.anudeep2011.com/category/spoj/" >SPOJ</a> (1)
+</li>
+	<li class="cat-item cat-item-1"><a href="https://blog.anudeep2011.com/category/uncategorized/" >Uncategorized</a> (2)
+</li>
+		</ul>
+</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="https://blog.anudeep2011.com/20-by-25/">20 by 25</a>
+							<span class="post-date">September 26, 2016</span>
+						</li>
+					<li>
+				<a href="https://blog.anudeep2011.com/machine-learning-everywhere-why-not-in-competitive-programming/">Machine learning everywhere, why not in Competitive programming?</a>
+							<span class="post-date">April 18, 2016</span>
+						</li>
+					<li>
+				<a href="https://blog.anudeep2011.com/mos-algorithm/">MO&#8217;s Algorithm (Query square root decomposition)</a>
+							<span class="post-date">December 28, 2014</span>
+						</li>
+					<li>
+				<a href="https://blog.anudeep2011.com/when-2-guys-talk-its-not-always-about-girlssports/">When 2 guys talk, its not always about girls/sports ;)</a>
+							<span class="post-date">July 18, 2014</span>
+						</li>
+					<li>
+				<a href="https://blog.anudeep2011.com/persistent-segment-trees-explained-with-spoj-problems/">Persistent segment trees &#8211; Explained with spoj problems</a>
+							<span class="post-date">July 13, 2014</span>
+						</li>
+					<li>
+				<a href="https://blog.anudeep2011.com/heavy-light-decomposition/">Heavy Light Decomposition</a>
+							<span class="post-date">April 11, 2014</span>
+						</li>
+				</ul>
+		</aside>		<aside id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Vineeth Kanaparthi</span> on <a href="https://blog.anudeep2011.com/20-by-25/#comment-5125">20 by 25</a></li><li class="recentcomments"><span class="comment-author-link">nabil1997</span> on <a href="https://blog.anudeep2011.com/mos-algorithm/#comment-5124">MO&#8217;s Algorithm (Query square root decomposition)</a></li><li class="recentcomments"><span class="comment-author-link">Arpit Agrawal</span> on <a href="https://blog.anudeep2011.com/mos-algorithm/#comment-5123">MO&#8217;s Algorithm (Query square root decomposition)</a></li><li class="recentcomments"><span class="comment-author-link">Arpit Agrawal</span> on <a href="https://blog.anudeep2011.com/mos-algorithm/#comment-5122">MO&#8217;s Algorithm (Query square root decomposition)</a></li><li class="recentcomments"><span class="comment-author-link">shahidul_brur</span> on <a href="https://blog.anudeep2011.com/heavy-light-decomposition/#comment-5121">Heavy Light Decomposition</a></li></ul></aside><aside id="text-3" class="widget widget_text"><h3 class="widget-title">Contact Me</h3>			<div class="textwidget"><div class="text_3">Ask about something or report me a bug or just say Hi. I will be happy to get back.</div>
+<div style="display:block; margin:0 auto;width:55%;">
+<a href = "https://www.facebook.com/anu2011" target="_blank"><img src="https://blog.anudeep2011.com/wp-includes/images/fb.png?x86950" height="32" width="32"></img></a> &nbsp;
+<a href = "mailto:anudeep2011@gmail.com"><img src="https://blog.anudeep2011.com/wp-includes/images/at.png?x86950" height="32" width="32"></img></a>
+</div>
+<!--
+<a href="https://blog.anudeep2011.com/contact-me/">
+<button type="button" class="my_button" style="margin-left:20px;" value="Contact Me!">Contact Me!</button></a>
+--></div>
+		</aside></div><!-- #secondary -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+				
+		<div class="clear"></div>
+		
+		
+				<div class="site-info">
+			Copyright 2017 
+			 - <a href="http://purothemes.com" title="A Free WordPress Theme by Puro">Theme by Puro</a>		</div><!-- .site-info -->
+		
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'anudeep2011';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1 && nodes[i].parentNode.tagName == 'A') {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        	<div style="display:none">
+	</div>
+<div id="felloy-footer"></div><script>var felloy_p = ;var felloy_page_id = "1226712937403114";</script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/blog.anudeep2011.com\/mos-algorithm\/":159};
+	</script>
+		<script type="text/javascript">
+		var windowOpen;
+		jQuery(document.body).on('click', 'a.share-facebook', function() {
+			if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+				windowOpen.close();
+			}
+			windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+			return false;
+		});
+		</script>
+				<script type="text/javascript">
+		var windowOpen;
+		jQuery(document.body).on('click', 'a.share-twitter', function() {
+			if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+				windowOpen.close();
+			}
+			windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+			return false;
+		});
+		</script>
+			<div id="sharing_email" style="display: none;">
+		<form action="/mos-algorithm/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" />
+			<script> document.getElementById('jetpack-source_f_name').value = ''; </script>
+			
+			<img style="float: right; display: none" class="loading" src="https://blog.anudeep2011.com/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif?x86950" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+				<script type="text/javascript">
+		var windowOpen;
+		jQuery(document.body).on('click', 'a.share-tumblr', function() {
+			if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+				windowOpen.close();
+			}
+			windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+			return false;
+		});
+		</script>
+				<script type="text/javascript">
+		var windowOpen;
+		jQuery(document.body).on('click', 'a.share-google-plus-1', function() {
+			if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+				windowOpen.close();
+			}
+			windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+			return false;
+		});
+		</script>
+				<script type="text/javascript">
+		var windowOpen;
+		jQuery(document.body).on('click', 'a.share-linkedin', function() {
+			if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+				windowOpen.close();
+			}
+			windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+			return false;
+		});
+		</script>
+				<script type="text/javascript">
+		var windowOpen;
+		jQuery(document.body).on('click', 'a.share-pocket', function() {
+			if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+				windowOpen.close();
+			}
+			windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+			return false;
+		});
+		</script>
+		<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js?x86950'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://blog.anudeep2011.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://blog.anudeep2011.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/jetpack/modules/photon/photon.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201704'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"https:\/\/blog.anudeep2011.com\/wp-admin\/admin-ajax.php","post_id":"159"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/wp-postviews/postviews-cache.js?x86950'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var puro_resp_menu_params = {"collapse":"768"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/themes/puro/js/responsive-menu.min.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-includes/js/comment-reply.min.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-includes/js/wp-embed.min.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/wysija-newsletters/js/validate/languages/jquery.validationEngine-en.js?x86950'></script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/wysija-newsletters/js/validate/jquery.validationEngine.js?x86950'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wysijaAJAX = {"action":"wysija_ajax","controller":"subscribers","ajaxurl":"https:\/\/blog.anudeep2011.com\/wp-admin\/admin-ajax.php","loadingTrans":"Loading...","is_rtl":""};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/wysija-newsletters/js/front-subscribers.js?x86950'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer='defer' src='https://blog.anudeep2011.com/wp-content/plugins/jetpack/modules/sharedaddy/sharing.js?x86950'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201704.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.3.1',blog:'65280527',post:'159',tz:'5.5',srv:'blog.anudeep2011.com'} ]);
+	_stq.push([ 'clickTrackerInit', '65280527', '159' ]);
+</script>
+
+</body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Page Caching using disk: enhanced
+Database Caching 2/67 queries in 0.038 seconds using disk
+
+ Served from: blog.anudeep2011.com @ 2017-01-23 06:04:43 by W3 Total Cache -->
